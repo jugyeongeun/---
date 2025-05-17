@@ -29,11 +29,42 @@ int main()
         if (choice == 1) {
             playGame();
         }
+        else if (choice == 2) {
+            printf("게임을 종료합니다.\n");
+            break;
+        }
+        else {
+            printf("잘못된 번호 %d를 입력하셨어요. 다시 입력해 주세요.\n", choice);
+        }
     }
 }
+//Camel 변수: numberOfStudent
+//Pascal 변수: NumberOfStudent
+//Snake 변수: number_of_student
 
+//함수 정의
 void playGame() {
     int answer, guess, tries = 0;
 
-    //다음시간 이어서 작성...
+    srand(time(NULL)); //무작위 seed를 설정
+    answer = rand() % 100 + 1; //1~100사이의 random값
+    /*printf("Debug: answer is: %d\n", answer);*/
+
+    printf("1부터 100사이의 숫자를 맞춰보세요!\n");
+
+    do {
+        printf("입력: ");
+        scanf_s("%d", &guess);
+        tries++;
+
+        if (guess > answer) {
+            printf("너무 큽니다!!\n");
+        }
+        else if (guess < answer) {
+            printf("너무 작습니다!!\n");
+        }
+        else {
+            printf("정답입니다!! %d번 만에 맞추셨어요!!\n", tries);
+        }
+    } while (guess != answer);
 }
